@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  /* Tablero de cambio: fondo verde-petroleo casi negro, como el panel
+     iluminado de una casa de cambio, con ambar para el dato que importa. */
+  --bg: #0f1b1a;
+  --bg-grid: #12211f;
+  --surface: #16302b;
+  --surface-quiet: #132622;
+  --border: #24443c;
+  --border-quiet: #1c352f;
+  --text: #e9f2ef;
+  --text-muted: #8fada6;
+  --text-faint: #5c7772;
+  --accent: #f2b705;
+  --accent-dim: #7a5f0c;
+  --up: #e5533d;
+  --down: #4ade80;
+
+  --font-ui: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-ticker: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono",
+    Menlo, Consolas, monospace;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-quiet: var(--surface-quiet);
+  --color-border: var(--border);
+  --color-border-quiet: var(--border-quiet);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-accent: var(--accent);
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-ticker);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  background-image: linear-gradient(
+    180deg,
+    var(--bg-grid) 0px,
+    var(--bg-grid) 1px,
+    transparent 1px,
+    transparent 28px
+  );
+  background-size: 100% 28px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
