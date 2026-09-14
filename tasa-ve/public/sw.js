@@ -1,5 +1,5 @@
-const CACHE_NAME = "tasa-ve-v1";
-const APP_SHELL = ["/", "/manifest.json", "/icons/icon-192.png", "/icons/icon-512.png"];
+const CACHE_NAME = "tasa-ve-v2";
+const APP_SHELL = ["/manifest.json", "/icons/icon-192.png", "/icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -19,11 +19,28 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Estrategia: network-first para las rutas /api, cache-first para el resto
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.pathname.startsWith("/api/")) return; // nunca cachear datos en vivo
 
+  // La página en sí (HTML) siempre se pide primero a la red, para que un
+  // redeploy se vea de inmediato. Solo si no hay internet, se usa la
+  // copia guardada como respaldo.
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((res) => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
+          return res;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Todo lo demás (íconos, manifest, JS/CSS con nombre de archivo
+  // versionado por Next.js) sí puede servirse de caché primero.
   event.respondWith(
     caches.match(event.request).then(
       (cached) =>

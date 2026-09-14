@@ -22,12 +22,14 @@ function GapRow({ label, value, help }: RowProps) {
       : "text-text-muted";
 
   return (
-    <div className="flex items-center justify-between py-1.5">
-      <div>
+    <div className="flex items-start justify-between gap-2 py-1.5">
+      <div className="min-w-0 flex-1">
         <p className="text-sm text-text">{label}</p>
         <p className="text-xs text-text-faint">{help}</p>
       </div>
-      <p className={`font-mono text-lg tabular-nums ${color}`}>{formatPct(value)}</p>
+      <p className={`font-mono text-lg tabular-nums shrink-0 ${color}`}>
+        {formatPct(value)}
+      </p>
     </div>
   );
 }
