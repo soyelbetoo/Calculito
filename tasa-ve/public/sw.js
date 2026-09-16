@@ -1,5 +1,11 @@
-const CACHE_NAME = "tasa-ve-v2";
-const APP_SHELL = ["/manifest.json", "/icons/icon-192.png", "/icons/icon-512.png"];
+const CACHE_NAME = "tasa-ve-v3";
+const APP_SHELL = [
+  "/manifest.json",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/logo-96.png",
+  "/icons/apple-touch-icon.png",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRates } from "@/hooks/useRates";
 import RateTile from "./RateTile";
 import CurrencyToggle from "./CurrencyToggle";
@@ -35,7 +36,10 @@ export default function RateBoard({ currency, onCurrencyChange }: Props) {
   return (
     <section aria-label="Tasas actuales" className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <h1 className="text-lg text-text">Calculito</h1>
+        <div className="flex items-center gap-2">
+          <Image src="/icons/logo-96.png" alt="" width={28} height={28} className="h-7 w-7" />
+          <h1 className="text-lg text-text">Calculito</h1>
+        </div>
         <p className="text-xs text-text-faint">
           {rates ? formatUpdatedAt(rates.timestamp) : "cargando…"}
         </p>
