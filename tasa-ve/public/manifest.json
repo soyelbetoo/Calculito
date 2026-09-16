@@ -1,7 +1,7 @@
 {
-  "name": "Tasa VE - Dólar y Binance P2P",
-  "short_name": "Tasa VE",
-  "description": "Tasa BCV, Binance P2P y promedio en tiempo real para Venezuela",
+  "name": "Calculito - Tasa VE",
+  "short_name": "Calculito",
+  "description": "Tasa BCV, Binance P2P y promedio en tiempo real para Venezuela, con calculadora incluida",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1b1a",

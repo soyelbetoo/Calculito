@@ -3,6 +3,7 @@
 import { useState } from "react";
 import RateBoard from "./RateBoard";
 import GapCard from "./GapCard";
+import CalculatorCard from "./CalculatorCard";
 import HistoryChart from "./HistoryChart";
 import AlertsPanel from "./AlertsPanel";
 import InstallPrompt from "./InstallPrompt";
@@ -15,6 +16,7 @@ export default function Dashboard() {
     <>
       <RateBoard currency={currency} onCurrencyChange={setCurrency} />
       <GapCard currency={currency} />
+      <CalculatorCard currency={currency} />
       <HistoryChart currency={currency} />
       <AlertsPanel />
       <InstallPrompt />

@@ -35,7 +35,7 @@ export default function RateBoard({ currency, onCurrencyChange }: Props) {
   return (
     <section aria-label="Tasas actuales" className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <h1 className="text-lg text-text">Tasa VE</h1>
+        <h1 className="text-lg text-text">Calculito</h1>
         <p className="text-xs text-text-faint">
           {rates ? formatUpdatedAt(rates.timestamp) : "cargando…"}
         </p>
